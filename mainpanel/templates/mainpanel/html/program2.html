@@ -1,0 +1,30 @@
+{% extends 'mainpanel/html/base.html' %}
+
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <div class="container">
+            <h1>Sprawdzenie cen hurtowych</h1>
+            <center>
+                <p>
+                    Najpierw wybierz odbiorcę. Naciśnij przycisk i czekaj na maila.
+                </p>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                </form>
+                <p><button type="button" class="btn btn-primary btn-lg">Działaj</button></p>
+                <a class="btn btn-primary" href="{% url 'home' %}" role="button">Powrót</a>
+            </center>
+
+        </div>
+
+
+    {% else %}
+    <div class="container">
+        <h1>Zaloguj się żeby widzieć tę stronę</h1>
+        <a href="{% url 'login' %}">Zaloguj się</a>
+    </div>
+{% endif %}
+{% endblock %}
+
